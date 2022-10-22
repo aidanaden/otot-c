@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  dev-db:
+    image: mysql:8.0
+    ports:
+      - 3369:3306
+    restart: always
+    environment:
+      MYSQL_DATABASE: mysqldb
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - otot
+  test-db:
+    image: mysql:8.0
+    ports:
+      - 3370:3306
+    environment:
+      MYSQL_DATABASE: mysqldb
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - otot
+networks:
+  otot:

@@ -1,0 +1,40 @@
+name: ci
+run-name: ${{ github.actor }} is running ci
+on:
+  push:
+    branches:
+      - main
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: mysql://mysql:mysql@localhost:3369/mysqldb
+      NEXTAUTH_SECRET: SUPERSECRET
+      CALENDARIFIC_API_KEY: 00e9be3d9730c3d5504e5c4794788bc428cdeea5
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 6.0.2
+      - run: pnpm install
+      - run: pnpm lint
+  build-test:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: mysql://mysql:mysql@localhost:3369/mysqldb
+      NEXTAUTH_SECRET: SUPERSECRET
+      CALENDARIFIC_API_KEY: 00e9be3d9730c3d5504e5c4794788bc428cdeea5
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 6.0.2
+      - run: pnpm install
+      - run: pnpm build:local
+      - run: pnpm test

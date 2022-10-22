@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Recoleta";
+    src: url("/fonts/recoleta/Recoleta-Regular.woff") format("woff"),
+      url("/fonts/recoleta/Recoleta-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Recoleta";
+    src: url("/fonts/recoleta/Recoleta-Medium.woff") format("woff"),
+      url("/fonts/recoleta/Recoleta-Medium.woff2") format("woff2");
+    font-weight: medium;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Recoleta";
+    src: url("/fonts/recoleta/Recoleta-SemiBold.woff") format("woff"),
+      url("/fonts/recoleta/Recoleta-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Recoleta";
+    src: url("/fonts/recoleta/Recoleta-Bold.woff") format("woff"),
+      url("/fonts/recoleta/Recoleta-Bold.woff2") format("woff2");
+    font-weight: bold;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Recoleta";
+    src: url("/fonts/recoleta/Recoleta-Black.woff") format("woff"),
+      url("/fonts/recoleta/Recoleta-Black.woff2") format("woff2");
+    font-weight: 800;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  body {
+    @apply font-sans bg-neutral-100;
+  }
+}
