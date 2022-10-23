@@ -43,4 +43,3 @@ jobs:
           version: 6.0.2
       - run: pnpm install
       - run: pnpm build:local
-      - run: pnpm test
