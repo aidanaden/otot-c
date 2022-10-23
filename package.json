@@ -11,7 +11,7 @@
     "prisma:migrate:deploy": "prisma migrate deploy",
     "build": "next build",
     "build:push": "pnpm prisma db push && pnpm build",
-    "build:local": "pnpm db:local:start && sleep 10 && pnpm prisma:migrate:deploy && pnpm build",
+    "build:local": "pnpm db:local:start && sleep 20 && pnpm prisma:migrate:deploy && pnpm build",
     "dev": "next dev",
     "dev:local": "pnpm prisma:migrate:dev && next dev",
     "postinstall": "prisma generate",
