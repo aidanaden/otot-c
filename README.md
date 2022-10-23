@@ -17,7 +17,7 @@
 - [Vercel](https://vercel.com/docs) (provides easy integration with Next.JS + continuous deployment)
 - [Planetscale](https://planetscale.com/docs/concepts/planetscale-workflow) (highly scalable serverless MySQL database with generous free plans)
 
-## Task B1: Simple Backend
+## Task C: Backend auth
 
 ### Requirements
 
@@ -73,143 +73,72 @@ Visit `http://localhost:3000` to confirm successful frontend deployment
 
 ### Testing via Postman
 
-Import the Postman collection via [this link](https://www.getpostman.com/collections/f113769cd7f4466c39eb).
+Import the Postman collection via [this link](https://www.getpostman.com/collections/e455e91c4348cd07f8fa).
 
 2 versions of the `API_URL` variable exists, one set to `localhost:3000` (locally deployment) and one set to `https://otot-b-phi.vercel.app` (vercel deployment)
 
 Explanation of HTTP requests:
 
-- `activity`: list all activities in database (will be empty if using local MySQL database)
-- `activity/:id`: returns error if ID does not exist
-  - `GET`: returns activity with the specified ID
-  - `PATCH` / `PUT`: updates specified field(s) in request body given an ID
-  - `DELETE`: removes the activity with the given ID from the database
+- `signin`: sign in with username and password (public route)
+- `user/signup`: sign up with a user account (public route)
+- `user/protected`: get user data of logged in user account (user protected route)
+- `admin/signup`: sign up with an admin account (public route)
+- `admin/protected`: get user data of logged in admin account (admin protected route)
 
 Note:
 
 - `params` and `body` would need to be updated manually, where they are necessary.
 
-### Screenshots
+### Public role screenshots
 
-#### `GET`: get activities given empty database
+#### Sign up as user with invalid credentials
 
-![get data from empty database](https://i.ibb.co/n7s2qDy/image.png)
+![public sign up](https://i.ibb.co/8DdysTg/image.png)
 
-#### `POST`: create invalid activity (missing category)
+#### Sign in as user with invalid credentials
 
-![post invalid activity](https://i.ibb.co/129j4mb/image.png)
+![public sign in](https://i.ibb.co/WDbgSFk/image.png)
 
-#### `POST`: create valid activity
+#### Test user protected route failure
 
-![post valid activity](https://i.ibb.co/QYfPw3t/image.png)
+![public user protected route](https://i.ibb.co/w6w7Z4r/image.png)
 
-#### `PATCH`/`PUT`: update name of activity with invalid value
+#### Test admin protected route failure
 
-![update activity with invalid data](https://i.ibb.co/nzNbcFx/image.png)
+![public admin protected route](https://i.ibb.co/xXNCFx6/image.png)
 
-#### `PATCH`/`PUT`: update name of activity with valid value
+### User role screenshots
 
-![update activity with valid data](https://i.ibb.co/n6HcdJ4/image.png)
+#### Sign up as user with valid credentials
 
-#### `GET`: get invalid activity given invalid id
+![user sign up](https://i.ibb.co/GkPLNXM/image.png)
 
-![get invalid activity](https://i.ibb.co/kqXGgK8/image.png)
+#### Sign in as user with valid credentials
 
-#### `GET`: get valid activity given valid id
+![user sign in](https://i.ibb.co/wKHhNmc/image.png)
 
-![get valid activity](https://i.ibb.co/KWKGxz3/image.png)
+#### Test user protected route success
 
-#### `DELETE`: remove invalid activity with invalid id
+![user user protected route](https://i.ibb.co/y8kWwCF/image.png)
 
-![delete invalid activity](https://i.ibb.co/2ZYpRZQ/image.png)
+#### Test admin protected route failure
 
-#### `DELETE`: remove valid activity with valid id
+![user admin protected route](https://i.ibb.co/GxJJSLD/image.png)
 
-![delete valid activity](https://i.ibb.co/yQwNzgj/image.png)
+### Admin role screenshots
 
-## Task B2.1: Testing through Continuous Integration
+#### Sign up as admin with valid credentials
 
-Jest was used to test the API routes locally as well as via Github Action.
+![admin sign up](https://i.ibb.co/7NmZbbz/image.png)
 
-### Summary of CI
+#### Sign in as admin with valid credentials
 
-- [Jest](https://jestjs.io/) used to test API endpoints
-- Local MySQL database used for tests
-- Postman collection can be found [here](https://www.getpostman.com/collections/f113769cd7f4466c39eb) with variables already set
-- Github Action yaml file can be viewed [here](https://github.com/aidanaden/otot-c/blob/main/.github/workflows/ci.yml).
+![admin sign in](https://i.ibb.co/ZfgvWfr/image.png)
 
-### Local test output
+#### Test user protected route success
 
-![Jest output](https://i.ibb.co/zsrsZF2/image.png)
+![admin user protected route](https://i.ibb.co/5kxCTwQ/image.png)
 
-### Testing via [Github Action](https://github.com/aidanaden/otot-b/actions/runs/3303991148?check_suite_focus=true)
+#### Test admin protected route success
 
-![Github Actions output](https://i.ibb.co/6YrF7Yd/image.png)
-
-## Task B2.2: Deploying through Continuous Deployment
-
-Since vercel is used to host both the frontend + backend, continuous deployment is automatically provided via vercel's github integration
-
-### Continuous Deployment Screenshots
-
-#### Vercel deployment
-
-![vercel deployment github](https://i.ibb.co/RQMjVjV/image.png)
-
-#### Deployed via vercel
-
-![vercel deployment on vercel](https://i.ibb.co/Wx3ND8s/image.png)
-
-## Task B3: Implement a Frontend
-
-The website is deployed on Vercel and can be accessed through this link [https://otot-b-phi.vercel.app/](https://otot-b-phi.vercel.app/).
-
-The home page automatically loads all of the activities currently stored in the live db hosted in planetscale.
-
-1. To create an "activity", click on the "create activity" button on the top right of the screen.
-
-2. To edit an activity, click on the "edit" button in the top right of the activity.
-
-3. To delete an activity, click on the "delete" button in the top right of the activity.
-
-<div style="page-break-after: always"></div>
-
-### Screenshot of Activities on frontend
-
-![desktop activity list](https://i.ibb.co/NtNJFnQ/image.png)
-
-![mobile activity list](https://i.ibb.co/pnG85bJ/image.png)
-
-<div style="page-break-after: always"></div>
-
-## Task B4: Pulling data from Serverless Function to Frontend
-
-The serverless API function will be pulling data from [Calendarific's API](https://calendarific.com/api-documentation) to query the holidays in SG for the current year
-
-The serverless function will be run using Next.JS' serverless API routes. When a client queries the API route, the serverless function will query the calendarific API endpoint (given a valid country code and year) and return a list of holidays.
-
-To view the holiday data, a page has been created on the frontend to display the holidays returned here [https://otot-b-phi.vercel.app/holidays](https://otot-b-phi.vercel.app/holidays).
-
-### Screenshot of B4
-
-#### Serverless function API route (via Postman)
-
-![Cloud Function](https://i.ibb.co/k32qJRL/image.png)
-
-<div style="page-break-after: always"></div>
-
-#### View all SG holidays for 2022
-
-![SG holidays 2022](https://i.ibb.co/W6Z0fvL/image.png)
-
-<div style="page-break-after: always"></div>
-
-#### View all UK holidays for 2011
-
-![UK holidays 2011](https://i.ibb.co/k8ffDVQ/image.png)
-
-<div style="page-break-after: always"></div>
-
-### Potential improvements
-
-In the future, google location API can be integrated to allow location autocomplete when creating activities (instead of having to manually enter the activity location information).
+![admin admin protected route](https://i.ibb.co/NxFLJjm/image.png)
