@@ -11,6 +11,9 @@ jobs:
       DATABASE_URL: mysql://mysql:mysql@localhost:3369/mysqldb
       NEXTAUTH_SECRET: SUPERSECRET
       CALENDARIFIC_API_KEY: 00e9be3d9730c3d5504e5c4794788bc428cdeea5
+      NEXTAUTH_URL: localhost:3000
+      EMAIL_SERVER: smtp://username:password@email-smtp-host.com
+      EMAIL_FROM: test@test.com
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -27,6 +30,9 @@ jobs:
       DATABASE_URL: mysql://mysql:mysql@localhost:3369/mysqldb
       NEXTAUTH_SECRET: SUPERSECRET
       CALENDARIFIC_API_KEY: 00e9be3d9730c3d5504e5c4794788bc428cdeea5
+      NEXTAUTH_URL: localhost:3000
+      EMAIL_SERVER: smtp://username:password@email-smtp-host.com
+      EMAIL_FROM: test@test.com
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3

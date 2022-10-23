@@ -12,11 +12,6 @@
 - MySQL (database used)
 - [tRPC](https://trpc.io/docs/v10/) (used to set up API routes with end-to-end typesafety)
 
-## Hosting
-
-- [Vercel](https://vercel.com/docs) (provides easy integration with Next.JS + continuous deployment)
-- [Planetscale](https://planetscale.com/docs/concepts/planetscale-workflow) (highly scalable serverless MySQL database with generous free plans)
-
 ## Task C: Backend auth
 
 ### Requirements
@@ -74,8 +69,6 @@ Visit `http://localhost:3000` to confirm successful frontend deployment
 ### Testing via Postman
 
 Import the Postman collection via [this link](https://www.getpostman.com/collections/e455e91c4348cd07f8fa).
-
-2 versions of the `API_URL` variable exists, one set to `localhost:3000` (locally deployment) and one set to `https://otot-b-phi.vercel.app` (vercel deployment)
 
 Explanation of HTTP requests:
 
